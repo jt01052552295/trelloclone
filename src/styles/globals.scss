@@ -1,0 +1,14 @@
+@charset 'utf-8';
+// https://sass-guidelin.es/ko
+
+// Configuration
+@import '@/styles/utils/variables';
+@import '@/styles/utils/mixins';
+@import '@/styles/utils/functions';
+@import '@/styles/utils/breakpoint';
+
+// base
+@import '@/styles/base/font';
+@import '@/styles/base/reset';
+
+@import '@/styles/home';

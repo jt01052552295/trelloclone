@@ -1,0 +1,30 @@
+@mixin anchorStyles() {
+  color: variable.$primary-color;
+  &:visited {
+    color: variable.$secondary-color;
+  }
+  &:hover {
+    color: variable.$secondary-color;
+  }
+  &:active {
+    color: variable.$secondary-color;
+  }
+}
+
+//mixin: 스타일 묶음을 반환
+
+@mixin my-mixin($w: 100px, $h: 0px) {
+  width: $w;
+  height: $h;
+  @content; // 스타일 추가 적용 가능.
+}
+
+@mixin fontSize($size: '') {
+  @if $size == 'small' {
+    font-size: 10px;
+  } @else if $size == 'large' {
+    font-size: 14px;
+  } @else {
+    font-size: 12px;
+  }
+}

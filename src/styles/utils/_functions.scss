@@ -1,0 +1,5 @@
+// function: 하나의 값을 반환
+
+@function my-func($num1, $num2) {
+  @return percentage($num1 / $num2);
+}

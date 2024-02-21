@@ -1,0 +1,10 @@
+.container {
+  max-width: 500px;
+}
+
+.button {
+  background: $blue;
+  &:hover {
+    background-color: $cyan;
+  }
+}
