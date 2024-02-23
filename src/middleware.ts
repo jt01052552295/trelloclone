@@ -11,5 +11,5 @@ export async function middleware() {
 // See "Matching Paths" below to learn more
 // middleware() 에 적용되는 목록
 export const config = {
-  matcher: ['/home', '/organization/1'],
+  matcher: ['/home', '/organization'],
 }
