@@ -35,7 +35,7 @@ const SigninPage = () => {
       if (!response?.ok) {
         setMessage('로그인 실패.')
       } else {
-        router.replace('/home')
+        router.replace('/organization/1')
       }
     } catch (err) {
       console.error(err)
