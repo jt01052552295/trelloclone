@@ -37,7 +37,7 @@ const Sidebar = ({ storageKey = 't-sidebar-state' }: SidebarProps) => {
 
   useEffect(() => {
     // setIsLoaded(false)
-    console.log(defaultAccordionValue)
+    // console.log(defaultAccordionValue)
   }, [defaultAccordionValue])
 
   const organizations: Organization[] = [
