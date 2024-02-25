@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache'
 import { db } from '@/lib/db'
 import { CreateBoard } from './schema'
 import { createSafeAction } from '@/lib/create-safe-action'
+import { incrementAvailableCount, hasAvailableCount } from '@/lib/org-limit'
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { user }: any = await auth()
@@ -12,6 +13,15 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   if (!user) {
     return {
       error: 'Unauthorized!',
+    }
+  }
+  const canCreate = await hasAvailableCount()
+  // const isPro = await checkSubscription();
+  const isPro = false
+
+  if (!canCreate && !isPro) {
+    return {
+      error: 'You have reached your limit of free boards. Please upgrade to create more.',
     }
   }
 
@@ -42,6 +52,10 @@ const handler = async (data: InputType): Promise<ReturnType> => {
         imageLinkHTML,
       },
     })
+
+    if (!isPro) {
+      await incrementAvailableCount()
+    }
   } catch (error) {
     return {
       error: 'Failed to create.',
@@ -49,6 +63,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   }
 
   revalidatePath(`/board/${board.id}`)
+  // 해당 /URL에 있던 캐시를 삭제하고 다시 생성해주는 함수인데 페이지를 다시 로드해주는 기능도 있음,
+  // 새로고침이 아니라 차이점만 바꿔주는 새로고침
+
   return { data: board }
 }
 

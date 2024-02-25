@@ -8,14 +8,14 @@ import { Hint } from '@/components/hint'
 import { Skeleton } from '@/components/ui/skeleton'
 import { FormPopover } from '@/components/form/form-popover'
 import { MAX_FREE_BOARDS } from '@/constants/boards'
-// import { getAvailableCount } from "@/lib/org-limit";
+import { getAvailableCount } from '@/lib/org-limit'
 // import { checkSubscription } from "@/lib/subscription";
 
 export const BoardList = async () => {
   const orgId = 'organization-1'
   const isPro = false
-  //   const availableCount = await getAvailableCount();
-  const availableCount = 0
+  // const isPro = await checkSubscription();
+  const availableCount = await getAvailableCount()
 
   if (!orgId) {
     return redirect('/select-org')

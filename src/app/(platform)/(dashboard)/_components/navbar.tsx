@@ -3,6 +3,7 @@ import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import Logout from './Logout'
 import MobileSidebar from './MobileSidebar'
+import { FormPopover } from '@/components/form/form-popover'
 
 const Navbar = () => {
   return (
@@ -12,14 +13,16 @@ const Navbar = () => {
         <div className="hidden md:flex">
           <Logo />
         </div>
-        <div>
-          <Button size="sm" className="rounded-sm hidden md:block h-auto  py-1.5 px-2">
+        <FormPopover align="start" side="bottom" sideOffset={18}>
+          <Button variant="default" size="sm" className="rounded-sm hidden md:block h-auto  py-1.5 px-2">
             Create
           </Button>
-          <Button size="sm" className="rounded-sm block md:hidden">
+        </FormPopover>
+        <FormPopover>
+          <Button variant="default" size="sm" className="rounded-sm block md:hidden">
             <Plus className="h-4 w-4" />
           </Button>
-        </div>
+        </FormPopover>
       </div>
       <div className="ml-auto flex items-center gap-x-2">
         <Logout />
