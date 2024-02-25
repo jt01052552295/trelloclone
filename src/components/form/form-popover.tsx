@@ -1,7 +1,7 @@
 'use client'
 
 import { ElementRef, useRef } from 'react'
-// import { toast } from "sonner";
+import { toast } from 'sonner'
 import { X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
@@ -29,19 +29,21 @@ export const FormPopover = ({ children, side = 'bottom', align, sideOffset = 0 }
 
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
-      //   toast.success("Board created!");
+      toast.success('Board created!')
       closeRef.current?.click()
       router.push(`/board/${data.id}`)
     },
     onError: (error) => {
-      //   toast.error(error);
+      console.error(error)
+      toast.error(error)
       //   proModal.onOpen();
     },
   })
 
   const onSubmit = (formData: FormData) => {
     const title = formData.get('title') as string
-    const image = formData.get('image') as string
+    // const image = formData.get('image') as string
+    const image = '1|2|3|4|5'
 
     execute({ title, image })
   }
@@ -52,9 +54,9 @@ export const FormPopover = ({ children, side = 'bottom', align, sideOffset = 0 }
       <PopoverContent align={align} className="w-80 pt-3" side={side} sideOffset={sideOffset}>
         <div className="text-sm font-medium text-center text-neutral-600 pb-4">Create board</div>
 
-        <Button className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600" variant="ghost" ref={closeRef}>
+        {/* <Button className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600" variant="ghost" ref={closeRef}>
           <X className="h-4 w-4" />
-        </Button>
+        </Button> */}
 
         <form action={onSubmit} className="space-y-4">
           <div className="space-y-4">

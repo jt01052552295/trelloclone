@@ -27,7 +27,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 
   let board
 
-  const orgId = '1'
+  const orgId = 'organization-1'
 
   try {
     // throw Error("test");
