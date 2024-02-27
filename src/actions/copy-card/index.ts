@@ -74,4 +74,4 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   return { data: card }
 }
 
-export const createCard = createSafeAction(CopyCard, handler)
+export const copyCard = createSafeAction(CopyCard, handler)
