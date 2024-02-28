@@ -5,11 +5,11 @@ import { Separator } from '@/components/ui/separator'
 import { Info } from '../_components/info'
 
 import { ActivityList } from './_components/activity-list'
-// import { checkSubscription } from "@/lib/subscription";
+import { checkSubscription } from '@/lib/subscription'
 
 const ActivityPage = async () => {
-  // const isPro = await checkSubscription();
-  const isPro = false
+  const isPro = await checkSubscription()
+  // const isPro = false
 
   return (
     <div className="w-full">

@@ -11,7 +11,7 @@ import { InputType, ReturnType } from './types'
 import { createAuditLog } from '@/lib/create-audit-log'
 import { ACTION, ENTITY_TYPE } from '@prisma/client'
 import { decreaseAvailableCount } from '@/lib/org-limit'
-// import { checkSubscription } from "@/lib/subscription";
+import { checkSubscription } from '@/lib/subscription'
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { user }: any = await auth()
@@ -22,8 +22,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
   }
 
-  //   const isPro = await checkSubscription()
-  const isPro = false
+  const isPro = await checkSubscription()
   const orgId = 'organization-1'
 
   const { id } = data

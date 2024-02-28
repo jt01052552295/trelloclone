@@ -8,6 +8,7 @@ import { createAuditLog } from '@/lib/create-audit-log'
 import { ACTION, ENTITY_TYPE } from '@prisma/client'
 import { createSafeAction } from '@/lib/create-safe-action'
 import { incrementAvailableCount, hasAvailableCount } from '@/lib/org-limit'
+import { checkSubscription } from '@/lib/subscription'
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { user }: any = await auth()
@@ -18,8 +19,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     }
   }
   const canCreate = await hasAvailableCount()
-  // const isPro = await checkSubscription();
-  const isPro = false
+  const isPro = await checkSubscription()
+  // const isPro = false
 
   if (!canCreate && !isPro) {
     return {
