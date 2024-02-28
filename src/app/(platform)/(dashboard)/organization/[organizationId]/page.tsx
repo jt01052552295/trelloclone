@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { db } from '@/lib/db'
 import { useAction } from '@/hooks/use-action'
 import { createBoard } from '@/actions/create-board'
-import Info from './_components/info'
+import { Info } from './_components/info'
 import { Separator } from '@/components/ui/separator'
 import { BoardList } from './_components/board-list'
 

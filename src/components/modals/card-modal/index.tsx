@@ -11,7 +11,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { Header } from './header'
 import { Description } from './description'
 import { Actions } from './actions'
-// import { Activity } from "./activity";
+import { Activity } from './activity'
 
 export const CardModal = () => {
   const id = useCardModal((state) => state.id)
@@ -23,6 +23,11 @@ export const CardModal = () => {
     queryFn: () => fetcher(`/api/cards/${id}`),
   })
 
+  const { data: auditLogsData } = useQuery<AuditLog[]>({
+    queryKey: ['card-logs', id],
+    queryFn: () => fetcher(`/api/cards/${id}/logs`),
+  })
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
@@ -32,10 +37,7 @@ export const CardModal = () => {
             <div className="w-full space-y-6">
               {!cardData ? <Description.Skeleton /> : <Description data={cardData} />}
 
-              {/* {!auditLogsData
-                ? <Activity.Skeleton />
-                : <Activity items={auditLogsData} />
-              } */}
+              {!auditLogsData ? <Activity.Skeleton /> : <Activity items={auditLogsData} />}
             </div>
           </div>
           {!cardData ? <Actions.Skeleton /> : <Actions data={cardData} />}

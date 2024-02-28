@@ -49,7 +49,7 @@ export const {
         }
 
         const user = await authResponse.json()
-        // console.log('CredentialsProvider22', user)
+        console.log('CredentialsProvider22', user)
         // NextAuth 에서 user 타입이 id, name, email, image 고정되있어서 아래처럼 해줘야됨.
         return {
           id: user.id,

@@ -9,7 +9,7 @@ interface InfoProps {
   isPro: boolean
 }
 
-const Info = ({ isPro }: InfoProps) => {
+export const Info = ({ isPro }: InfoProps) => {
   const [isLoaded, setIsLoaded] = useState(true)
 
   if (!isLoaded) {
@@ -48,5 +48,3 @@ Info.Skeleton = function SkeletonInfo() {
     </div>
   )
 }
-
-export default Info
